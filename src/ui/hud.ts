@@ -66,7 +66,7 @@ export function hudHTML(): string {
   }
 
   return `<div class="xhud">
-  <div class="xtop">${avatar(S.nama, { role: 'pres', fem: S.gen === 'p', bg: '#8a1c26', cls: 's' })}
+  <div class="xtop"><span class="xavtap" data-action="tapPresAvatar">${avatar(S.nama, { role: 'pres', fem: S.gen === 'p', bg: '#8a1c26', cls: 's' })}</span>
    <div class="xtt"><b>${esc(presName())}</b><small>Tahun ${th} · Kuartal ${kw} · ${SEAS[S.q % 4].m}</small></div>
    <div class="xr"><button class="xhelp" data-action="openGuide" data-page="0" aria-label="Cara main">❓</button></div></div>
   <div class="prog"><div style="width:${((S.q + (S.res ? 1 : 0)) / 20) * 100}%"></div></div>

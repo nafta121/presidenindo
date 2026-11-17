@@ -2,6 +2,7 @@ import './styles/base.css';
 import './styles/components-v3.css';
 import './styles/theme-nusantara.css';
 import './styles/features-v35-v36.css';
+import './styles/cheat.css';
 
 import { GUIDE_KEY } from './data/constants';
 import { load, registerRenderer, render, store } from './engine/store';
@@ -15,6 +16,10 @@ export function bootApp(): void {
   const appEl = $('app');
   if (appEl) {
     bindEvents(appEl);
+  }
+  const cheatEl = $('cheat');
+  if (cheatEl) {
+    bindEvents(cheatEl);
   }
   try {
     if (!store.S && !load() && !localStorage.getItem(GUIDE_KEY)) {

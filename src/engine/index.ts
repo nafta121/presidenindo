@@ -10,3 +10,4 @@ export * from './politicsV35';
 export * from './policiesAndPrograms';
 export * from './migrations';
 export * from './lifecycle';
+export * from './cheat';

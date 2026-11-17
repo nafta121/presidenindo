@@ -1,4 +1,30 @@
 import { chooseResh, closeProf, joinPar, lobi, openProf, openResh } from '../engine/cabinet';
+import {
+  cheatAdjustStat,
+  cheatClearModals,
+  cheatExportSave,
+  cheatFillCommodities,
+  cheatFinishTerm,
+  cheatForceEvent,
+  cheatImportSave,
+  cheatJumpQuarter,
+  cheatMaxCabinet,
+  cheatMaxPrograms,
+  cheatRefreshQuotas,
+  cheatRevive,
+  cheatSetCoalition,
+  cheatSetFx,
+  cheatSetStat,
+  cheatShockIhsg,
+  cheatSpawnCase,
+  cheatSpawnMkSuit,
+  closeCheat,
+  setCheatTab,
+  tapPresAvatar,
+  toggleCheatMin,
+  toggleGodMode,
+  type EditableCheatStat,
+} from '../engine/cheat';
 import { decideCase } from '../engine/corruption';
 import {
   ackAlert,
@@ -36,7 +62,7 @@ import {
   pvMin,
   pvVisit,
 } from '../engine/politicsV35';
-import { render, store, type AppStore } from '../engine/store';
+import { render, store, type AppStore, type CheatTabKey } from '../engine/store';
 import { toast } from '../rendering/effects';
 import { closeCard, dlCard, openCard, share, shCard } from '../rendering/shareCard';
 import type {
@@ -50,6 +76,7 @@ import type {
   OathKind,
   TabKey,
 } from '../types/game';
+import { renderCheatDrawer } from './cheatDrawer';
 
 const boundRoots = new WeakSet<EventTarget>();
 
@@ -59,8 +86,12 @@ export function bindEvents(root: HTMLElement): void {
 
   root.addEventListener('input', (ev) => {
     const target = ev.target;
-    if (target instanceof HTMLInputElement && target.id === 'nm') {
-      store.nm = target.value;
+    if (target instanceof HTMLInputElement) {
+      if (target.id === 'nm') {
+        store.nm = target.value;
+      } else if (target.dataset.action === 'cheatStatRange') {
+        cheatSetStat(target.dataset.key as EditableCheatStat, Number(target.value));
+      }
     }
   });
 
@@ -279,6 +310,105 @@ export function bindEvents(root: HTMLElement): void {
         break;
       case 'reset':
         reset();
+        break;
+      case 'tapPresAvatar':
+        tapPresAvatar();
+        break;
+      case 'cheatClose':
+        closeCheat();
+        break;
+      case 'cheatMin':
+        toggleCheatMin();
+        break;
+      case 'cheatTab':
+        setCheatTab(el.dataset.tab as CheatTabKey);
+        renderCheatDrawer(true);
+        break;
+      case 'cheatGod':
+        toggleGodMode();
+        break;
+      case 'cheatRefresh':
+        cheatRefreshQuotas();
+        break;
+      case 'cheatStatAdj':
+        cheatAdjustStat(el.dataset.key as EditableCheatStat, Number(el.dataset.delta));
+        break;
+      case 'cheatStatSet':
+        cheatSetStat(el.dataset.key as EditableCheatStat, Number(el.dataset.val));
+        break;
+      case 'cheatJumpQ':
+        cheatJumpQuarter(Number(el.dataset.q));
+        break;
+      case 'cheatJumpFromSel': {
+        const qSel = document.getElementById('cheat-q-sel') as HTMLSelectElement | null;
+        if (qSel) cheatJumpQuarter(Number(qSel.value));
+        break;
+      }
+      case 'cheatForceEvFromSel': {
+        const evSel = document.getElementById('cheat-ev-sel') as HTMLSelectElement | null;
+        if (evSel) cheatForceEvent(Number(evSel.value));
+        break;
+      }
+      case 'cheatClearModals':
+        cheatClearModals();
+        break;
+      case 'cheatRevive':
+        cheatRevive();
+        break;
+      case 'cheatFinish':
+        cheatFinishTerm();
+        break;
+      case 'cheatCoal':
+        cheatSetCoalition(el.dataset.mode as 'max' | 'min');
+        break;
+      case 'cheatMaxCab':
+        cheatMaxCabinet();
+        break;
+      case 'cheatMaxPrg':
+        cheatMaxPrograms();
+        break;
+      case 'cheatFx':
+        cheatSetFx(Number(el.dataset.usd), el.dataset.alert === '1');
+        break;
+      case 'cheatIhsg':
+        cheatShockIhsg(Number(el.dataset.pct), el.dataset.alert === '1');
+        break;
+      case 'cheatFillKom':
+        cheatFillCommodities(5);
+        break;
+      case 'cheatSpawnCase':
+        cheatSpawnCase();
+        break;
+      case 'cheatSpawnMk':
+        cheatSpawnMkSuit();
+        break;
+      case 'cheatCopySave': {
+        const json = cheatExportSave();
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(json).then(
+            () => toast('📋 JSON Save disalin ke clipboard'),
+            () => toast('⚠️ Gagal menyalin ke clipboard'),
+          );
+        } else {
+          toast('📋 Salin manual dari kotak JSON');
+        }
+        break;
+      }
+      case 'cheatLoadSave': {
+        const ta = document.getElementById('cheat-save-json') as HTMLTextAreaElement | null;
+        if (ta && cheatImportSave(ta.value)) {
+          renderCheatDrawer(true);
+        }
+        break;
+      }
+      case 'cheatHardReset':
+        localStorage.clear();
+        reset();
+        renderCheatDrawer(true);
+        break;
+      case 'cheatQuickStart':
+        newGame(store.nm.trim() || 'Nusantara', ['j1', 'j2', 'j4'], store.latar);
+        cheatClearModals();
         break;
     }
   });

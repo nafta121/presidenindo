@@ -10,6 +10,7 @@ import { post } from '../rendering/effects';
 import { cardModal } from '../rendering/shareCard';
 import type { LatarKey, NavGroupKey, OutfitRole } from '../types/game';
 import { hudHTML, tickerHTML } from './hud';
+import { renderCheatDrawer } from './cheatDrawer';
 import { guideHTML, overlays } from './overlays';
 import { PANELS } from './panels';
 
@@ -70,7 +71,7 @@ export function endHTML(): string {
   const sm = summary();
   const sup = `<div class="xsup" style="text-align:center">${SUP}</div>`;
   const act = `<button class="btn" data-action="openCard">🖼️ Buat Kartu Hasil (PNG)</button><button class="btn alt" data-action="share">📋 Salin Teks Hasil</button><button class="btn alt" data-action="reset">${S.over ? 'Coba Lagi' : 'Main Lagi'}</button>`;
-  const pav = `<div style="display:flex;justify-content:center">${avatar(S.nama, { role: 'pres', fem: S.gen === 'p', bg: '#8a1c26', cls: 'l' })}</div>`;
+  const pav = `<div style="display:flex;justify-content:center"><span class="xavtap" data-action="tapPresAvatar">${avatar(S.nama, { role: 'pres', fem: S.gen === 'p', bg: '#8a1c26', cls: 'l' })}</span></div>`;
 
   if (S.over) {
     const bad = S.log
@@ -134,4 +135,5 @@ export function renderApp(): void {
   const S = store.S;
   appEl.innerHTML = gz(!S ? startHTML() : S.over || S.done ? endHTML() : gameHTML());
   post();
+  renderCheatDrawer();
 }

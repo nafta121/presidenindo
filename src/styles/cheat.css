@@ -1,0 +1,26 @@
+/* Floating Debug & Cheat Mini-Drawer (#cheat outside #app) */
+.xavtap{display:inline-flex;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.xcheat-pill{position:fixed;top:2.25rem;right:.6rem;z-index:65;display:inline-flex;align-items:center;gap:.35rem;background:linear-gradient(135deg,#2b161b,#5c1722);color:#f7d58b;border:1.5px solid #d9a441;border-radius:99rem;padding:.35rem .75rem;font-size:.76rem;font-weight:800;box-shadow:0 6px 18px rgba(24,10,12,.34);cursor:pointer}
+.xcheat{position:fixed;top:2.25rem;right:.6rem;z-index:65;width:min(21.5rem,calc(100vw - 1.2rem));max-height:calc(100dvh - 6.9rem);display:flex;flex-direction:column;background:#fdf9f1;color:#2a1d17;border:2px solid #7a1f2b;border-radius:1rem;box-shadow:0 14px 36px rgba(28,12,15,.35);overflow:hidden;font-size:.78rem}
+.xcheat-hd{display:flex;align-items:center;justify-content:space-between;gap:.4rem;padding:.45rem .65rem;background:linear-gradient(90deg,#5c1722,#7a1f2b);color:#fff6e3}
+.xcheat-hd b{font-size:.78rem;letter-spacing:.03em;display:flex;align-items:center;gap:.35rem}
+.xcheat-god{background:#1f8a5b;color:#fff;font-size:.62rem;padding:.1rem .38rem;border-radius:.4rem;font-weight:800}
+.xcheat-hc{display:flex;gap:.25rem}
+.xcheat-hc button{width:1.55rem;height:1.55rem;padding:0;border-radius:.45rem;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.25);font-size:.78rem;font-weight:800;display:grid;place-items:center}
+.xcheat-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#efe5d2;border-bottom:1px solid #dfd1b8;padding:.22rem;gap:.2rem}
+.xcheat-tabs button{padding:.34rem .2rem;font-size:.72rem;font-weight:700;border-radius:.5rem;background:transparent;color:#6c584c;border:none;box-shadow:none}
+.xcheat-tabs button.on{background:#7a1f2b;color:#fff}
+.xcheat-bd{padding:.55rem .65rem;overflow-y:auto;display:flex;flex-direction:column;gap:.45rem}
+.xcheat-sec{background:#fff;border:1px solid #e4d8c4;border-radius:.7rem;padding:.45rem .5rem;display:flex;flex-direction:column;gap:.35rem}
+.xcheat-sec small{color:#7b6b5f;font-size:.68rem;line-height:1.25}
+.xcheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.xcheat button.cb{padding:.38rem .45rem;font-size:.72rem;font-weight:700;border-radius:.55rem;background:#f5ede0;color:#2a1d17;border:1px solid #dccbb0;text-align:left;box-shadow:none;line-height:1.2}
+.xcheat button.cb:hover{background:#eadbc3}
+.xcheat button.cb.pri{background:#7a1f2b;color:#fff;border-color:#7a1f2b}
+.xcheat button.cb.ok{background:#1f8a5b;color:#fff;border-color:#1f8a5b}
+.xcheat button.cb.warn{background:#b83227;color:#fff;border-color:#b83227}
+.xcheat-st{display:grid;grid-template-columns:5.6rem 1fr auto;align-items:center;gap:.35rem;font-size:.72rem}
+.xcheat-st input[type=range]{width:100%;margin:0;padding:0;accent-color:#7a1f2b;height:1.1rem}
+.xcheat-st b{min-width:3.4rem;text-align:right;font-variant-numeric:tabular-nums}
+.xcheat select,.xcheat textarea{width:100%;font:inherit;font-size:.72rem;background:#fff;color:#2a1d17;border:1px solid #d6c5a9;border-radius:.5rem;padding:.35rem .45rem}
+.xcheat textarea{min-height:6.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.66rem;resize:vertical}

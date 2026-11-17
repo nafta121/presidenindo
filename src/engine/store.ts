@@ -1,6 +1,8 @@
 import { KEY } from '../data/constants';
 import type { GameState, GenderKey, LatarKey, StatKey, TabKey } from '../types/game';
 
+export type CheatTabKey = 'stat' | 'kuartal' | 'politik' | 'save';
+
 export interface AppStore {
   S: GameState | null;
   tab: TabKey;
@@ -17,6 +19,11 @@ export interface AppStore {
   BTAB: 'pasar' | 'dagang' | 'riwayat';
   PSEL: string | null;
   usedNames: Set<string>;
+  cheatOpen: boolean;
+  cheatMin: boolean;
+  cheatTab: CheatTabKey;
+  godMode: boolean;
+  avatarTaps: number[];
 }
 
 export const store: AppStore = {
@@ -35,6 +42,11 @@ export const store: AppStore = {
   BTAB: 'pasar',
   PSEL: null,
   usedNames: new Set<string>(),
+  cheatOpen: false,
+  cheatMin: false,
+  cheatTab: 'stat',
+  godMode: false,
+  avatarTaps: [],
 };
 
 let renderCallback: (() => void) | null = null;

@@ -144,7 +144,7 @@ export function techF(f: EffectMap, role?: RoleKey): EffectMap {
 
 export function checkOver(): boolean {
   const S = store.S;
-  if (!S) return false;
+  if (!S || store.godMode) return false;
   const r: Array<[boolean, string, string, string]> = [
     [S.rak <= 8, 'Dilengserkan Rakyat', '💥', 'Demo besar-besaran mengepung Istana. Kepercayaan rakyat habis dan kamu terpaksa mundur.'],
     [S.kas <= 0, 'Negara Bangkrut', '💸', 'Kas negara kosong (Rp 0). Gaji ASN tertunda, pasar panik, dan krisis fiskal tak terhindarkan.'],
