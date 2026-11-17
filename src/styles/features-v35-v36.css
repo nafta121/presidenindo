@@ -1,0 +1,39 @@
+/* v3.5 */
+.xmap{display:grid;grid-template-columns:repeat(15,1fr);grid-auto-rows:2.1rem;gap:3px;margin:.6rem 0 .3rem}
+.xpv{position:relative;border:0;border-radius:.4rem;color:#fff;font-size:.58rem;font-weight:800;padding:0;letter-spacing:-.02em;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+.xpv.on{outline:3px solid #7a1f2b;outline-offset:1px;z-index:2}
+.xpv i{position:absolute;top:-4px;right:-3px;background:#c62a2f;color:#fff;border-radius:50%;width:.9rem;height:.9rem;font-style:normal;font-size:.6rem;line-height:.9rem;border:1px solid #fff}
+.xleg2{display:flex;gap:.7rem;flex-wrap:wrap;font-size:.7rem;color:#6b5a50;margin-bottom:.6rem}
+.xleg2 i{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;margin-right:.25rem;vertical-align:-1px}
+.xpvrow{display:flex;justify-content:space-between;gap:.5rem;width:100%;text-align:left;background:#fff;color:#2b211c;border:1px solid #e3d9c6;border-radius:.7rem;padding:.55rem .7rem;margin:.3rem 0;font-size:.85rem}
+.xdt{margin-top:.5rem;border-top:1px dashed #d9cdb6;padding-top:.4rem}
+.xdt summary{cursor:pointer;color:#7a1f2b;font-weight:700;font-size:.88rem}
+.xflow{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem}
+.xfl{background:#f6f1e7;border:1px solid #e3d9c6;border-radius:.5rem;padding:.2rem .5rem;font-size:.78rem}
+.xar{color:#c62a2f}
+.xtlc{border-left:3px solid #c62a2f;padding:.1rem 0 .1rem .6rem;margin:.35rem 0;font-size:.85rem}
+.xact button.ch small{font-weight:400;opacity:.8}
+@media(max-width:420px){.xmap{grid-auto-rows:1.85rem;gap:2px}.xpv{font-size:.5rem}}
+/* v3.5.1 anti-overflow & ekspor-impor */
+html,body{max-width:100%;overflow-x:hidden}
+.xrow>*,.xtot>*,.pt>*,.xseg>*,.pg>*,.card{min-width:0}
+.xrow.xl2 span{overflow-wrap:anywhere}
+.xtot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.xseg button{padding:.5rem .15rem;font-size:.8rem}
+.xs3 button{font-size:.78rem}
+/* v3.5.3 anti-overflow keras (iOS/Android in-app browser) */
+.xst6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.pg,.jg{grid-template-columns:repeat(auto-fill,minmax(min(16rem,100%),1fr))}
+.ticker{max-width:100%;contain:paint}
+.tkw{position:relative;min-width:0;height:1.8rem}
+.tk{position:absolute;left:0;top:0;line-height:1.8rem;white-space:nowrap}
+.wrap>*,.main>*,.panel>*{min-width:0;max-width:100%}
+#app,.wrap,.main,.side,.panel{max-width:100%;min-width:0}
+.xseg button{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* v3.6 */
+.xseg button.chgd{box-shadow:0 0 0 2px #d9a441 inset}
+.xbarl{height:5px;border-radius:3px;background:#e9dfcb;margin:2px 0 6px;overflow:hidden}
+.xbarl i{display:block;height:100%;background:#c62a2f}
+.xbarl.g i{background:#2e9d68}
+.xlev{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+.xlev button{flex:1 1 45%;background:#fff;border:1px solid #e3d9c6;border-radius:.7rem;padding:.5rem;font-size:.8rem;text-align:left;color:#2b211c}

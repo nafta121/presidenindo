@@ -1,0 +1,110 @@
+import type { PolicyDef, RbKey, RoleKey } from '../types/game';
+
+export const POL: PolicyDef[] = [
+  { id: 'subsidi', ic: '🌾', n: 'Subsidi Pangan & Energi', d: 'Tekan harga kebutuhan pokok lewat subsidi.', f: { hrg: -10, rak: 3, kas: -9 }, cd: 2 },
+  { id: 'bansos', ic: '💸', n: 'Bansos Tunai', d: 'Bantuan langsung ke keluarga kurang mampu.', f: { rak: 8, kas: -8, hrg: 2 }, cd: 2 },
+  { id: 'mbg', ic: '🍱', n: 'Program Makan Bergizi Gratis', d: 'Anak sekolah makan gratis. Populer, tapi mahal.', f: { rak: 9, kas: -11, kol: 2, eko: 1 }, cd: 2, tag: 'mbg' },
+  { id: 'hilir', ic: '⛏️', n: 'Hilirisasi Tambang & Smelter', d: 'Olah sumber daya di dalam negeri.', f: { eko: 8, kas: -6, stb: -2, rak: -1 }, cd: 3, tag: 'hilir' },
+  { id: 'infra', ic: '🛣️', n: 'Bangun Tol & Pelabuhan', d: 'Infrastruktur dulu, hasilnya belakangan.', f: { eko: 6, kas: -9, rak: 2 }, cd: 2 },
+  { id: 'pajak', ic: '🧾', n: 'Reformasi Pajak', d: 'Kejar penerimaan negara. Rakyat dan DPR bakal ngomel.', f: { kas: 12, rak: -6, eko: -2, kol: -3 }, cd: 4 },
+  { id: 'birokrasi', ic: '✂️', n: 'Pangkas Birokrasi', d: 'Efisiensi anggaran. Partai kehilangan jatah.', f: { kas: 6, eko: 2, kol: -6, rak: -1 }, cd: 4 },
+  { id: 'pasar', ic: '🛒', n: 'Operasi Pasar Murah', d: 'Gelontorkan stok ke pasar.', f: { hrg: -7, kas: -3 }, cd: 1 },
+  { id: 'impor', ic: '🚢', n: 'Impor Pangan', d: 'Cepat menurunkan harga, petani kesal.', f: { hrg: -12, rak: -3, kas: -4 }, cd: 3 },
+  { id: 'blusukan', ic: '🥾', n: 'Blusukan ke Daerah', d: 'Turun langsung, dengar keluhan warga.', f: { rak: 5, stb: 2, kas: -1 }, cd: 1 },
+  { id: 'lobi', ic: '🤝', n: 'Lobi Ketua Umum Partai', d: 'Ngopi bareng, bagi-bagi proyek.', f: { kol: 9, kas: -3, rak: -1 }, cd: 1 },
+  { id: 'korupsi', ic: '⚖️', n: 'Berantas Korupsi', d: 'Bersih-bersih. Elite koalisi tidak senang.', f: { rak: 6, stb: 2, kol: -8 }, cd: 2, tag: 'korupsi' },
+  { id: 'utang', ic: '📜', n: 'Tarik Utang Luar Negeri', d: 'Kas terisi sekarang, bunga datang tiap kuartal.', f: { kas: 16, utg: 4 }, cd: 2 },
+  { id: 'bayar', ic: '🏧', n: 'Bayar Utang Dipercepat', d: 'Kurangi beban bunga jangka panjang.', f: { kas: -12, utg: -3, eko: 1 }, cd: 2 },
+  { id: 'umkm', ic: '📱', n: 'Digitalisasi UMKM', d: 'Warung dan pasar go digital.', f: { eko: 5, rak: 2, kas: -5 }, cd: 2 },
+  { id: 'aparat', ic: '👮', n: 'Perkuat Aparat Keamanan', d: 'Keamanan naik, kebebasan jadi pertanyaan.', f: { stb: 8, rak: -3, kas: -4 }, cd: 2 },
+  // v3.2 additions
+  { id: 'diplo', ic: '🌍', n: 'Misi Diplomasi Ekonomi', d: 'Keliling negara mitra, buka pasar ekspor baru.', f: { eko: 4, kas: -4, stb: 1 }, cd: 2 },
+  { id: 'siber', ic: '🔐', n: 'Perkuat Keamanan Siber', d: 'Lindungi data warga dan sistem negara.', f: { stb: 4, rak: 1, kas: -4 }, cd: 3 },
+  { id: 'bencana', ic: '⛑️', n: 'Dana Siaga Bencana', d: 'Cadangan untuk banjir, gempa, dan letusan.', f: { stb: 3, rak: 3, kas: -5 }, cd: 2 },
+  { id: 'digitalpajak', ic: '💻', n: 'Pajak Digital & Sistem Coretax', d: 'Tutup celah penerimaan negara.', f: { kas: 8, rak: -3, eko: -1 }, cd: 3 },
+  // v3.6 additions
+  { id: 'kur', ic: '🏪', n: 'Kredit Usaha Rakyat Bunga Murah', d: 'Pinjaman ringan untuk warung, petani, dan nelayan.', f: { eko: 5, rak: 3, kas: -6 }, cd: 2 },
+  { id: 'koperasi', ic: '🤝', n: 'Koperasi Desa Mandiri', d: 'Koperasi di tiap desa sebagai pusat belanja dan simpan pinjam warga.', f: { rak: 4, eko: 3, kas: -7 }, cd: 3 },
+  { id: 'danadesa', ic: '🏘️', n: 'Naikkan Dana Desa', d: 'Kepala desa senang, warga desa merasakan pembangunan.', f: { rak: 6, stb: 2, kol: 2, kas: -8 }, cd: 3 },
+  { id: 'cukai', ic: '🚬', n: 'Naikkan Cukai Rokok & Minuman Manis', d: 'Kas negara naik, perokok dan pabrik mengeluh.', f: { kas: 7, rak: -3, hrg: 1, eko: -1 }, cd: 3 },
+  { id: 'amnesti', ic: '🧾', n: 'Pengampunan Pajak Jilid Baru', d: 'Harta yang disembunyikan boleh dilaporkan dengan tebusan murah.', f: { kas: 10, rak: -4, kol: 2, eko: 1 }, cd: 5 },
+  { id: 'bumn', ic: '🏢', n: 'Rapikan & Gabung BUMN (Superholding)', d: 'Dividen naik, kursi komisaris partai berkurang.', f: { kas: 5, eko: 2, kol: -5, rak: -1 }, cd: 4 },
+  { id: 'beasiswa', ic: '🎓', n: 'Perluas Beasiswa & KIP Kuliah', d: 'Anak desa bisa kuliah. Mahal, hasilnya jangka panjang.', f: { rak: 6, eko: 2, kas: -6 }, cd: 3 },
+  { id: 'jkn', ic: '🩺', n: 'Perluas JKN: Iuran Kelas 3 Ditanggung Negara', d: 'Warga miskin berobat tanpa bayar.', f: { rak: 7, stb: 1, kas: -8 }, cd: 3 },
+  { id: 'mudik', ic: '🚆', n: 'Diskon Tiket & Tol Mudik Lebaran', d: 'Populer di momen mudik, kasnya terkuras sedikit.', f: { rak: 4, eko: 2, kas: -4 }, cd: 4 },
+  { id: 'bbmnaik', ic: '⛽', n: 'Naikkan Harga BBM Bersubsidi', d: 'Hemat subsidi besar, tapi harga merambat dan mahasiswa turun ke jalan.', f: { kas: 13, hrg: 8, rak: -8, stb: -3 }, cd: 5 },
+  { id: 'bbmturun', ic: '⛽', n: 'Turunkan Harga BBM', d: 'Rakyat senang, kas menanggung selisih.', f: { hrg: -6, rak: 5, kas: -10 }, cd: 4 },
+  { id: 'sawah', ic: '🌾', n: 'Cetak Sawah Baru Merauke', d: 'Lumbung pangan baru di ujung timur.', f: { hrg: -5, eko: 2, kas: -7, rak: -1 }, cd: 3 },
+  { id: 'maritim', ic: '⚓', n: 'Tol Laut & Poros Maritim', d: 'Kapal rutin ke pulau terluar, harga barang antarpulau turun.', f: { eko: 5, hrg: -2, kas: -7 }, cd: 3 },
+  { id: 'wisata', ic: '🏝️', n: 'Promosi 10 Bali Baru', d: 'Wisatawan mancanegara ke destinasi baru.', f: { eko: 5, kas: -5, rak: 1 }, cd: 3 },
+  { id: 'judol', ic: '🎰', n: 'Blokir Judi Online & Pinjol Ilegal', d: 'Warga lega, pelaku usaha gelap melawan.', f: { rak: 5, stb: 2, kas: -2, eko: -1 }, cd: 3 },
+  { id: 'moratorium', ic: '🌳', n: 'Moratorium Sawit & Reboisasi', d: 'Hutan dijaga, ekspor sawit bisa seret.', f: { rak: 2, eko: -3, kas: -3, stb: 1 }, cd: 4 },
+  { id: 'asn', ic: '👔', n: 'Naikkan Gaji ASN & Pensiun', d: 'Birokrat senang, belanja pegawai makin berat.', f: { rak: 3, kol: 5, kas: -8 }, cd: 4 },
+  { id: 'guru', ic: '🧑‍🏫', n: 'Tunjangan Guru Honorer', d: 'Guru honorer diangkat dan disejahterakan.', f: { rak: 5, kol: 1, kas: -6 }, cd: 3 },
+];
+
+export const POL_ROLE: Record<string, RoleKey> = {
+  subsidi: 'tan',
+  bansos: 'sos',
+  mbg: 'kes',
+  hilir: 'esd',
+  infra: 'eko',
+  birokrasi: 'dag',
+  pasar: 'tan',
+  impor: 'tan',
+  blusukan: 'set',
+  korupsi: 'dag',
+  umkm: 'eko',
+  aparat: 'han',
+  diplo: 'lun',
+  siber: 'han',
+  bencana: 'dag',
+  kur: 'eko',
+  koperasi: 'eko',
+  danadesa: 'dag',
+  cukai: 'kes',
+  amnesti: 'eko',
+  bumn: 'eko',
+  beasiswa: 'pdd',
+  jkn: 'kes',
+  mudik: 'eko',
+  bbmnaik: 'esd',
+  bbmturun: 'esd',
+  sawah: 'tan',
+  maritim: 'eko',
+  wisata: 'eko',
+  judol: 'han',
+  moratorium: 'esd',
+  asn: 'dag',
+  guru: 'pdd',
+};
+
+export const POL_RB: Record<string, Partial<Record<RbKey, number>>> = {
+  pajak: { pajak: 0.3 },
+  digitalpajak: { pajak: 0.2 },
+  hilir: { pnbp: 0.2 },
+  diplo: { bea: 0.12 },
+  birokrasi: { hemat: 0.25 },
+  umkm: { pajak: 0.1 },
+  cukai: { bea: 0.12 },
+  amnesti: { pajak: 0.1 },
+  bumn: { pnbp: 0.15 },
+};
+
+export const RB_LBL: Record<RbKey, string> = {
+  pajak: 'penerimaan pajak',
+  pnbp: 'PNBP (SDA & BUMN)',
+  bea: 'bea & cukai',
+  hemat: 'efisiensi belanja',
+};
+
+export const NEED_T = 8;
+export const TECH_MULT = [0.8, 0.9, 1, 1.08, 1.15] as const;
+
+export const TECH_TXT = [
+  'Jujur saja, kementerian kami belum siap. Risiko gagal tinggi dan hasilnya bisa di bawah target.',
+  'Masih banyak yang perlu dimatangkan. Bisa jalan, tapi hasilnya mungkin di bawah harapan.',
+  'Bisa kami jalankan. Tolong pengawasannya tetap dijaga.',
+  'Siap dijalankan. Ada catatan kecil soal koordinasi, tapi aman.',
+  'Sangat siap! Juknis sudah kami susun sampai tingkat desa.',
+];

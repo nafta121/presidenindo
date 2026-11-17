@@ -1,0 +1,43 @@
+/* ===== Tema "Kertas Nusantara" (v3.4): krem hangat, merah bendera, emas ===== */
+:root{--bg:#f6f1e7;--card:#ffffff;--card2:#fbf6ec;--line:#e4d8c4;--red:#c62a2f;--txt:#2a1d17;--mut:#7b6b5f;--gold:#a8741a;--good:#1f8a5b;--bad:#c23b3b}
+html{font-size:clamp(15px,1.3vw + 8px,24px)}
+body{background:#f6f1e7 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2272%22 height=%2272%22%3E%3Cg fill=%22none%22 stroke=%22%23b8862b%22 stroke-opacity=%22.10%22 stroke-width=%221.2%22%3E%3Cellipse cx=%2236%22 cy=%2218%22 rx=%2210%22 ry=%2218%22/%3E%3Cellipse cx=%2236%22 cy=%2254%22 rx=%2210%22 ry=%2218%22/%3E%3Cellipse cx=%2218%22 cy=%2236%22 rx=%2218%22 ry=%2210%22/%3E%3Cellipse cx=%2254%22 cy=%2236%22 rx=%2218%22 ry=%2210%22/%3E%3C/g%3E%3C/svg%3E") fixed;color:var(--txt)}
+.bg,.sky{display:none!important}
+.flag{height:.35rem;margin:0 -.9rem}
+h1{background:none!important;-webkit-text-fill-color:#7a1f2b;color:#7a1f2b;animation:none!important}
+h2{color:var(--txt)}
+.ticker{background:#7a1f2b;border:0;border-radius:.8rem}
+.tk span{color:#ffe9d6}
+.card,.st,.jp,.df button,.tabs button,input[type=text]{box-shadow:0 1px 2px rgba(60,35,20,.06),0 4px 14px rgba(60,35,20,.05)}
+.card{border-radius:1.1rem;padding:.9rem}
+.st{border-radius:.95rem}
+.card.good{border-color:#7cc8a2;animation:none;background:#f3fbf6}
+.card.bad{border-color:#e9a3a3;animation:none;background:#fff6f5}
+.pc .ic,.eic{animation:none}
+.pc .ic{font-size:2rem;background:#f6efe1;border-radius:.9rem;width:3.1rem;height:3.1rem;display:grid;place-items:center;flex:none}
+.btn,.card>button:not(.ch),.xbtns button,.xchs button{box-shadow:0 2px 0 #8f1c20,0 6px 14px rgba(198,42,47,.22)}
+.btn.alt,.card>button.alt,.xbtns button.alt,.xchs button.alt{box-shadow:none;background:#f3ebdc!important;color:var(--txt)!important;border:1px solid var(--line)}
+button:disabled{background:#ece4d6!important;color:#a69a8c!important;box-shadow:none!important}
+.ch{background:#fffaf0;color:var(--txt)}
+.ch:hover{background:#fff3df;border-color:var(--red)}
+.xnav{background:#7a1f2b;border-top:3px solid #d9a441;box-shadow:0 -6px 20px rgba(60,20,10,.18)}
+.xnav button{color:#f1d9c9}
+.xnav button.on{background:rgba(255,255,255,.16);color:#fff}
+.xnav button u{box-shadow:0 0 0 2px #7a1f2b}
+.foot{background:linear-gradient(rgba(246,241,231,0),#f6f1e7 45%)}
+.modal{background:rgba(40,16,12,.62)}
+.xbub{box-shadow:0 10px 40px rgba(40,16,12,.3);border-color:#d9a441}
+.xsay{background:#fff7e8;color:#2a1d17;border:1px solid #ecd9b8}
+.xsay:before{border-right-color:#fff7e8}
+.xsay small{color:#8a5a2a}
+.xsay.no{background:#fff0ee;border:1px solid #e9a3a3}
+.xsay.no:before{border-right-color:#fff0ee}
+#toast{background:#2a1d17;color:#fff}
+.tabs button.on,.df button.on,.xseg button.on{background:var(--red);border-color:var(--red);color:#fff}
+.jp.on{background:#fff0ea;border-color:var(--red)}
+.chip.good{background:#e3f4ea;color:#1f8a5b}.chip.bad{background:#fde8e6;color:#c23b3b}
+.stars{color:#c88a14}
+.xfxl{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;padding:.4rem .7rem;background:#fff;border:1px solid var(--line);border-radius:.8rem;font-size:.78rem;color:var(--mut);cursor:pointer}
+.xfxl b{font-weight:800}
+.gd{color:#b27a10}
+.xoath{background:#fffaf0!important}
